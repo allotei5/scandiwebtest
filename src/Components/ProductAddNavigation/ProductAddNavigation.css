@@ -1,0 +1,11 @@
+.product-add-navigation {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+#go-back {
+    text-decoration: none;
+    border: #000 2px solid;
+    color: #000;
+    font-size: 13px;
+}

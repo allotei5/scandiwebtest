@@ -1,0 +1,39 @@
+#product_add_div {
+    width: 50%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.form-label {
+    font-size: 13px;
+    /* width: 50px; */
+}
+
+.form-input {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-bottom: 10px;
+}
+
+.form-input input {
+    border: #000 1px solid;
+    height: 30px;
+}
+
+.form-input input:focus {
+    border: #000 2px solid;
+}
+
+.form-input select {
+    border: #000 1px solid;
+    height: 30px;
+}
+
+.input-container {
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.input-container small {
+    color: maroon;
+}

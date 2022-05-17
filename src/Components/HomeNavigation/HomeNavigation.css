@@ -1,0 +1,51 @@
+.navigation-bar {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding: 20px 5px 5px;
+    border-bottom: #000 2px solid;
+}
+
+.navigation-title {
+    padding: 0;
+    margin: 0;
+}
+
+.navigation-items {
+    justify-self: end;
+}
+
+.navigation-button {
+    margin-right: 25px;
+    background-color: #fff;
+    padding: 2px 5px;
+    font-family: 'Poppins';
+    box-shadow: 2px 2px;
+    cursor: pointer;
+}
+
+#add {
+    text-decoration: none;
+    border: #000 2px solid;
+    color: #000;
+    font-size: 13px;
+}
+
+#add:hover {
+    background-color: #0064003c;
+}
+
+#delete-product-btn:hover {
+    background-color: rgba(128, 0, 0, 0.252);
+}
+
+#save:hover {
+    background-color: #0064003c;
+}
+
+#cancel:hover {
+    background-color: rgba(128, 0, 0, 0.252);
+}
+
+#go-back:hover {
+    background-color: rgba(47, 79, 79, 0.259);
+}

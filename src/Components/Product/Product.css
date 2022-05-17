@@ -1,0 +1,16 @@
+.product {
+    display: grid;
+    grid-template-columns: 1fr 9fr;
+    border: #000 2px solid;
+    padding: 20px 10px;
+    
+}
+
+
+
+.product-details p {
+    font-size: 12px;
+    padding: 0;
+    margin: 4px 0;
+    text-align: center;
+}

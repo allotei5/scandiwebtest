@@ -1,0 +1,16 @@
+{
+    "name": "allotei/backend",
+    "authors": [
+        {
+            "name": "allotei",
+            "email": "allotei5@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Model\\": "./Model",
+            "Controllers\\": "./Controllers"
+        }
+    }
+}
