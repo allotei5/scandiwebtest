@@ -5,9 +5,9 @@ import { FormWeight } from '../FormWeight/FormWeight'
 import { FormSize } from '../FormSize/FormSize'
 import { FormDimension } from '../FormDimension/FormDimension'
 
-export const ProductAddForm = ({ setSku, sku, setName, name, setPrice, price,  setAttribute, attribute, skuError, nameError, priceError, attributeError }) => {
+export const ProductAddForm = ({ setSku, sku, setName, name, setPrice, price,  setAttribute, attribute, skuError, nameError, priceError, attributeError, type, setType, serverError }) => {
 
-    const [ type, setType ] = useState(0);
+    // const [ type, setType ] = useState(0);
 
     const selectOnChange = (value) => {
         setType(value);
@@ -17,6 +17,9 @@ export const ProductAddForm = ({ setSku, sku, setName, name, setPrice, price,  s
   return (
     <div id='product_add_div'>
         <form id='product_form'>
+            <div className="input-container">
+                { (serverError !=="") ? <small>{serverError}</small> : ""}
+            </div>
             <div className='form-input'>
                 <div className='form-label'>
                     <label>SKU</label>
@@ -40,7 +43,7 @@ export const ProductAddForm = ({ setSku, sku, setName, name, setPrice, price,  s
                     <label className='form-label'>Price ($)</label>
                 </div>
                 <div className='input-container'>
-                    <input type="number" placeholder="12" id='price' value={price} onChange={ e => setPrice(e.target.value) } />
+                    <input type="number" placeholder="12" min="0" id='price' value={price} onChange={ e => setPrice(e.target.value) } />
                     { (priceError !== "") ? <small>{priceError}</small> : "" }
 
                 </div>
@@ -51,18 +54,18 @@ export const ProductAddForm = ({ setSku, sku, setName, name, setPrice, price,  s
                 </div>
                 <select id='productType' onChange={e => selectOnChange(e.target.value)}>
                     <option selected disabled>Type Switcher</option>
-                    <option id='DVD' value="1">DVD</option>
-                    <option id='Furniture' value="2">Book</option>
-                    <option id='Book' value="3">Furniture</option>
+                    <option id='DVD' value="DVD">DVD</option>
+                    <option id='Furniture' value="Book">Book</option>
+                    <option id='Book' value="Furniture">Furniture</option>
                 </select>
             </div>
             {
-                (type == 1) ? <FormSize setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
-                : (type == 2) ? <FormWeight setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
-                : (type == 3) ? <FormDimension setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
+                (type == "DVD") ? <FormSize setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
+                : (type == "Book") ? <FormWeight setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
+                : (type == "Furniture") ? <FormDimension setAttribute={setAttribute} attribute={attribute} attributeError={attributeError} />
                 : ""
-                
             }
+            
         </form>
     </div>
   )

@@ -4,7 +4,7 @@ namespace Model;
 
 use Model\Database;
 
-class Product extends Database {
+abstract class Product extends Database {
 
     private $id;
     private $sku;
@@ -54,6 +54,7 @@ class Product extends Database {
     }
 
     public function getAllProducts() {
+
         $sql = "SELECT * FROM `products`";
         $query = $this->runQuery($sql);
         $products_from_db = $this->dbFetchAll();
@@ -88,7 +89,7 @@ class Product extends Database {
     public function checkUniqueSku($sku) {
         $this->setSku($sku);
         $sql = "SELECT `sku` FROM `products` WHERE `sku`='".$this->getSku()."'";
-        $run = $this->runQuery($sql);
+        $this->runQuery($sql);
         $sku = $this->dbFetchAll();
         if(empty($sku)) {
             return true;
@@ -97,15 +98,6 @@ class Product extends Database {
         }
     }
 
-    public function addProduct($sku, $name, $price, $attribute) {
+    abstract public function addProduct($sku, $name, $price, $attribute);
 
-        $this->setSku($sku);
-        $this->setName($name);
-        $this->setPrice($price);
-        $this->setAttribute($attribute);
-
-        $sql = "INSERT INTO `products`(`sku`, `name`, `price`, `attribute`) VALUES ('".$this->getSku()."', '". $this->getName()."', '".$this->getPrice() ."', '". $this->getAttribute() . "')";
-        return $this->runQuery($sql);
-
-    }
 }

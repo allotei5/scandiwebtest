@@ -24,6 +24,7 @@ export const Product = ({ product, checkForDelete, unCheckForDelete }) => {
             <p>{product.id}</p>
             <p>{product.sku}</p>
             <p>{product.name}</p>
+            <p>${product.price}</p>
             <p>{product.attribute}</p>
         </div>
     </div>

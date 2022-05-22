@@ -15,12 +15,14 @@ export const AddProduct = () => {
   const [priceError, setPriceError] = useState('');
   const [attribute, setAttribute] = useState('');
   const [ attributeError, setAttribruteError ] = useState('');
+  const [ type, setType ] = useState('');
+  const [ serverError, setServerError] = useState('');
 
   const localBackend = 'http://localhost/scandiweb/backend/index.php';
   const remoteBackend =
     'https://www.juniortest.brainstormafrica.com/backend/index.php';
   
-  const backend = remoteBackend;
+  const backend = localBackend;
 
   const saveProduct = async () => {
     // TODO validation
@@ -35,19 +37,27 @@ export const AddProduct = () => {
     const requiredErrorMessage = "Please, submit required data";
 
     if (sku === '') {
-      setSkuError(requiredErrorMessage);
+      setSkuError("SKU is required");
       error += 1;
     } 
 
     if (name === '') {
-      setNameError(requiredErrorMessage);
+      setNameError("Name is required");
       error += 1;
     } 
     
     if (price === '') {
-      setPriceError(requiredErrorMessage);
+      setPriceError("Price is required");
       error += 1;
     } 
+
+    if (price < 0) {
+      setPriceError("Price must not be less than 0")
+    }
+
+    if (isNaN(price)) {
+      setPriceError("Price must be a number");
+    }
 
     if (attribute === '') {
       setAttribruteError(requiredErrorMessage);
@@ -67,9 +77,10 @@ export const AddProduct = () => {
             name,
             price,
             attribute,
+            type
           }),
         });
-    
+
         const data = await res.json();
     
         if (data.response === true) {
@@ -79,9 +90,7 @@ export const AddProduct = () => {
           setAttribute('');
           window.location.replace("/");
         } else {
-          if (data.responseMessage == 1) {
-            setSkuError("SKU is not unique");
-          }
+          setServerError(data.responseMessage);
         }
       };
 
@@ -105,10 +114,12 @@ export const AddProduct = () => {
         setName={setName} name={name}
         setPrice={setPrice} price={price}
         setAttribute={setAttribute} attribute={attribute}
+        setType={setType} type={type}
         skuError={skuError}
         nameError={nameError}
         priceError={priceError}
         attributeError={attributeError}
+        serverError={serverError}
       />
       <Footer />
     </>

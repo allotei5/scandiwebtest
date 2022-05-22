@@ -12,7 +12,7 @@ export const Home = () => {
   const localBackend = "http://localhost/scandiweb/backend/index.php";
   const remoteBackend = "https://www.juniortest.brainstormafrica.com/backend/index.php"
 
-  const backend = remoteBackend;
+  const backend = localBackend;
 
   const [ products, setProducts ] = useState([]);
   const [ deleteProductsState, setDeleteProductState ] = useState([]);

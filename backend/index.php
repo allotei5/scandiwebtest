@@ -36,7 +36,11 @@ if($requestType == "DELETE") {
 }
 
 if($requestType == "POST") {
+
     $form_data = json_decode(file_get_contents("php://input"));
+    
+    $product->setType($form_data->type);
+
     $add = $product->addNewProduct($form_data->sku, $form_data->name, $form_data->price, $form_data->attribute);
 
     if($add["response"] == true) {
@@ -44,4 +48,5 @@ if($requestType == "POST") {
     }else if ($add["response"] == false) {
         echo json_encode($add);
     }
+
 }
