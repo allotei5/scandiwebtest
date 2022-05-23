@@ -17,7 +17,7 @@ export const FormWeight = ({ setAttribute, attributeError }) => {
 
     if(errors === 0) {
       setFormError("");
-      setAttribute({size: e.target.value});
+      setAttribute({weight: e.target.value});
     }
   }
 

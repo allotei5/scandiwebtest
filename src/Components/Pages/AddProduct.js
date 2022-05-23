@@ -22,7 +22,7 @@ export const AddProduct = () => {
   const remoteBackend =
     'https://www.juniortest.brainstormafrica.com/backend/index.php';
   
-  const backend = localBackend;
+  const backend = remoteBackend;
 
   const saveProduct = async () => {
     // TODO validation
@@ -63,8 +63,6 @@ export const AddProduct = () => {
       setAttribruteError(requiredErrorMessage);
     }
 
-    console.log(attribute);
-    
     if (error === 0) {
 
         const res = await fetch(backend, {
@@ -80,6 +78,15 @@ export const AddProduct = () => {
             type
           }),
         });
+
+        console.log(JSON.stringify({
+          sku,
+          name,
+          price,
+          attribute,
+          type
+        }));
+        
 
         const data = await res.json();
     

@@ -39,7 +39,8 @@ class ProductController {
         foreach($attribute as $key => $value) {
 
             $check = $this->checkForInt($value);
-            if(!$check) {
+            if($check == false) {
+                $this->errors +=1;
                 return false;
             }else {
                 return true;

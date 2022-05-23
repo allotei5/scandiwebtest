@@ -46,7 +46,7 @@ export const FormDimension = ({ setAttribute, attributeError }) => {
             setLengthError("Length must be a number")
         }
 
-        if(errors !== 0) {
+        if(errors === 0) {
             if (height !== "" && width !== "" && length !== "") {
                 setAttribute({
                     height,
