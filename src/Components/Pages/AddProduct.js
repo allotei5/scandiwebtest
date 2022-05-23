@@ -53,14 +53,17 @@ export const AddProduct = () => {
 
     if (price < 0) {
       setPriceError("Price must not be less than 0")
+      error += 1;
     }
 
     if (isNaN(price)) {
       setPriceError("Price must be a number");
+      error += 1;
     }
 
     if (attribute === '') {
       setAttribruteError(requiredErrorMessage);
+      error += 1;
     }
 
     if (error === 0) {
